@@ -1,4 +1,6 @@
 import '@/styles/globals.css'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 export const metadata = {
   title: 'Built By',
   description: 'Showcase and discover remarkable developer projects',
@@ -12,11 +14,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        Navbar
+        <Navbar/>
         <main>
         {children}
         </main>
-        Footer
+        <Footer/>
         </body>
     </html>
   )
