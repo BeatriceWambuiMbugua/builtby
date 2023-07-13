@@ -20,8 +20,9 @@ const FooterColumn = ({ title, links }: ColumnProps) => (
   </div>
 );
 export default function Footer() {
+    const currentYear = new Date().toISOString().substr(0,4)
   return (
-    <footer className="flexStart footer pl-0">
+    <footer className="flexStart footer">
       <div className="flex flex-col gap-12 w-full">
         <div className="flex items-start flex-col">
           <Image
@@ -73,7 +74,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="flexBetween footer_copyright">
-        <p>&#169; 2023 BuiltBy. All rights reserved</p>
+        <p>&#169; <span className="font-semibold">{currentYear}</span> BuiltBy. All rights reserved</p>
         <p className="text-gray"><span className="text-black font-semibold">10, 214</span> projects submitted</p>
       </div>
     </footer>
