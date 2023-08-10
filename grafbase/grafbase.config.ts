@@ -7,7 +7,7 @@ const User = g
     email: g.string().unique(),
     avatarUrl: g.url(),
     description: g.string().optional(),
-    githhubUrl: g.url().optional(),
+    githubUrl: g.url().optional(),
     linkedInUrl: g.url().optional(),
     projects: g
       .relation(() => Project)
@@ -18,7 +18,7 @@ const User = g
     rules.public().read();
   });
 
-  // @ts-ignore
+// @ts-ignore
 const Project = g
   .model("Project", {
     title: g.string().length({ min: 3 }),
@@ -35,7 +35,7 @@ const Project = g
 
 const jwt = auth.JWT({
   issuer: "grafbase",
-  secret: g.env("NEXTAUTH_SECRET_KEY"),
+  secret: g.env("NEXTAUTH_SECRET"),
 });
 
 export default config({
