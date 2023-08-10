@@ -25,6 +25,7 @@ export default async function Navbar() {
         {session?.user ? (
           <>
             <ProfileMenu session = {session}/>
+            <Link href="/create-project">Share Work</Link>
           </>
         ) : (
           <AuthProviders />
