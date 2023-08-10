@@ -20,17 +20,13 @@ const FooterColumn = ({ title, links }: ColumnProps) => (
   </div>
 );
 export default function Footer() {
-    const currentYear = new Date().toISOString().substr(0,4)
+  const currentYear = new Date().toISOString().substr(0, 4);
   return (
     <footer className="flexStart footer">
       <div className="flex flex-col gap-12 w-full">
         <div className="flex items-start flex-col">
-          <Image
-            src="/logo-hotpink.svg"
-            width={116}
-            height={38}
-            alt="Built by"
-          />
+          <p className="logotext text-[#e55982] text-2xl">builtby</p>
+
           <p className="text-start text-sm font-normal mt-5 max-w-xs">
             Built By is the world's most popular community website for creatives
             and developers to share, grow, and get hired
@@ -44,38 +40,44 @@ export default function Footer() {
           />
 
           <div className="flex-1 flex flex-col gap-4">
-          <FooterColumn
-            title={footerLinks[1].title}
-            links={footerLinks[1].links}
-          />
-           <FooterColumn
-            title={footerLinks[2].title}
-            links={footerLinks[2].links}
-          />
+            <FooterColumn
+              title={footerLinks[1].title}
+              links={footerLinks[1].links}
+            />
+            <FooterColumn
+              title={footerLinks[2].title}
+              links={footerLinks[2].links}
+            />
           </div>
           <FooterColumn
             title={footerLinks[3].title}
             links={footerLinks[3].links}
+          />
+          <div className="flex-1 flex flex-col gap-4">
+            <FooterColumn
+              title={footerLinks[4].title}
+              links={footerLinks[4].links}
             />
-             <div className="flex-1 flex flex-col gap-4">
-          <FooterColumn
-            title={footerLinks[4].title}
-            links={footerLinks[4].links}
-          />
-           <FooterColumn
-            title={footerLinks[5].title}
-            links={footerLinks[5].links}
-          />
+            <FooterColumn
+              title={footerLinks[5].title}
+              links={footerLinks[5].links}
+            />
           </div>
           <FooterColumn
             title={footerLinks[6].title}
             links={footerLinks[6].links}
-            />
+          />
         </div>
       </div>
       <div className="flexBetween footer_copyright">
-        <p>&#169; <span className="font-semibold">{currentYear}</span> BuiltBy. All rights reserved</p>
-        <p className="text-gray"><span className="text-black font-semibold">10, 214</span> projects submitted</p>
+        <p>
+          &#169; <span className="font-semibold">{currentYear}</span> BuiltBy.
+          All rights reserved
+        </p>
+        <p className="text-gray">
+          <span className="text-black font-semibold">10, 214</span> projects
+          submitted
+        </p>
       </div>
     </footer>
   );

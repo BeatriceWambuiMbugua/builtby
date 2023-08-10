@@ -2,14 +2,15 @@ import { NavLinks } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 import AuthProviders from "./AuthProviders";
+import { getCurrentUser } from "@/lib/session";
 
-export default function Navbar() {
-    const session = {}
+export default async function Navbar() {
+    const session = await getCurrentUser();
   return (
-    <nav className="flexBetween navbar">
+    <nav className="flexBetween navbar lg:px-20">
       <div className="flex-1 flexStart gap-10">
-        <Link href="/">
-          <Image src="logo.svg" width={115} height={43} alt="BuiltBy" />
+        <Link href="/" className="">
+        <p className="logotext text-black text-3xl">builtby</p>
         </Link>
         <ul className="xl:flex hidden text-sm gap-7">
           {NavLinks.map((link) => (
@@ -20,9 +21,10 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="flexCenter gap-4">
-        {session ? (
+        {session?.user ? (
             <>
-            UserPhoto
+            {session?.user?.image && (<Image src={session.user.image} width={40} height={40} className="rounded-full" alt={session.user.name}/>)}
+        
 
             <Link href="/create-project">
                 Share Work
