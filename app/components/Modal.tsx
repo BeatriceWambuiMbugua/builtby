@@ -10,7 +10,7 @@ const Modal = ({ children }: { children: ReactNode }) => {
     const onDismiss = useCallback(() => {
       router.push('/')
     }, [router]);
-    const handleClick = useCallback( (e) => {
+    const handleClick = useCallback( (e: React.MouseEvent) => {
       if((e.target === overlay.current) && onDismiss){
         onDismiss();
       }
