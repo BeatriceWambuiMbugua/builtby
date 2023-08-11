@@ -1,8 +1,10 @@
 "use client";
 import { SessionInterface } from "@/common.types";
 import Image from "next/image";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import FormField from "./FormField";
+import CustomMenu from "./CustomMenu";
+import { categoryFilters } from "@/constants";
 
 type Props = {
   type: string;
@@ -13,10 +15,14 @@ const ProjectForm = ({ type, session }: Props) => {
   const handleFormSubmit = (e: React.FormEvent) => {};
   const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {};
   const handleStateChange = (fieldName: string, value: string) => {};
-  const form = {
-    image: "",
-    title: "",
-  };
+ const [form, setForm] = useState({
+  image: "",
+  title: "",
+  description:"",
+  githubUrl: "", 
+  liveSiteUrl: "",
+  category: ""
+ })
   return (
     <form onSubmit={handleFormSubmit} className="flexStart form">
       <div className="flexStart form_image-container">
@@ -47,6 +53,37 @@ const ProjectForm = ({ type, session }: Props) => {
         placeholder="BuiltBy"
         setState={(value) => handleStateChange("title", value)}
       />
+      <FormField
+        title="Description"
+        state={form.description}
+        placeholder="Showcase and discover remarkable developer projects."
+        setState={(value) => handleStateChange("description", value)}
+      />
+      <FormField
+        type="url"
+        title="Website URL"
+        state={form.liveSiteUrl}
+        placeholder="https://beatricewambuimbugua.vercel.app/"
+        setState={(value) => handleStateChange("liveSiteUrl", value)}
+      />
+      <FormField
+        type="url"
+        title="Github URL"
+        state={form.githubUrl}
+        placeholder="https://github.com/BeatriceWambuiMbugua"
+        setState={(value) => handleStateChange("githubUrl", value)}
+      />
+
+      {/* custom menu */}
+      <CustomMenu
+        title="Category"
+        state={form.category}
+        filters={categoryFilters}
+        setState={(value) => handleStateChange("category", value)}
+      />
+      <div className="flexStart w-full">
+        <button>Create</button>
+      </div>
     </form>
   );
 };
